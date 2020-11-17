@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My Daily Expenses
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+<ion-row>
+  <ion-col size-lg="3" size-md="6" size-sm="12" size="12" *ngFor="let i of list">
+    <ion-card>
+<ion-toolbar>
+  <ion-icon style="float: right;padding: 10px 10px 0 0;" (click)="editItem(i)" name="create"></ion-icon>
+  <ion-icon style="float: right;padding: 10px 10px 0 0;" name="trash" (click)="deleteItem(i)"></ion-icon>
+</ion-toolbar>
+
+      <ion-card-header>
+      <ion-title>{{i.title}} - {{i.type}}</ion-title>
+      <ion-card-subtitle>₹ {{i.amount}}</ion-card-subtitle>
+      <ion-card-subtitle>{{i.date}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+      {{i.description}}
+      </ion-card-content>
+        </ion-card>
+  </ion-col>
+</ion-row>
+  </ion-grid>
+
+
+</ion-content>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addExpense()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
